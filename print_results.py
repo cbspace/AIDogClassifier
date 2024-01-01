@@ -73,10 +73,10 @@ Correct NOT-a-dog: {:.2f}%, Correct dog: {:.2f}%, Correct Breed: {:.2f}%, Match 
     results_stats_dic["n_match"],
     results_stats_dic["n_images"] - results_stats_dic["n_match"],
     results_stats_dic["n_images"],
-    results_stats_dic["n_notdogs_img"],
     results_stats_dic["n_dogs_img"],
-    results_stats_dic["pct_correct_dogs"],
+    results_stats_dic["n_notdogs_img"],
     results_stats_dic["pct_correct_notdogs"],
+    results_stats_dic["pct_correct_dogs"],
     results_stats_dic["pct_correct_breed"],
     results_stats_dic["pct_match"]
     ))
