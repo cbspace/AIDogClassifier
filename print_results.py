@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
+# PROGRAMMER: Craig Brennan
+# DATE CREATED: 01/01/2024
 # REVISED DATE: 
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
@@ -68,16 +68,17 @@ NOTE: Number of Matches and non-matches is based on file names (labels)
 
 ** Statistics **
 N Images: {},  N Dog Images: {},  N NotDog Images: {} 
-Correct dog: {:.2f}%, Correct NOTdog: {:.2f}%, Correct Breed: {:.2f}%\n'''.format(
+Correct NOT-a-dog: {:.2f}%, Correct dog: {:.2f}%, Correct Breed: {:.2f}%, Match Labels: {:.2f}%\n'''.format(
     results_stats_dic["n_images"],
     results_stats_dic["n_match"],
     results_stats_dic["n_images"] - results_stats_dic["n_match"],
     results_stats_dic["n_images"],
-    results_stats_dic["n_dogs_img"],
     results_stats_dic["n_notdogs_img"],
+    results_stats_dic["n_dogs_img"],
     results_stats_dic["pct_correct_dogs"],
     results_stats_dic["pct_correct_notdogs"],
     results_stats_dic["pct_correct_breed"],
+    results_stats_dic["pct_match"]
     ))
     
     print("** Dog Breeds Identified **")
