@@ -4,7 +4,7 @@
 #                                                                             
 # PROGRAMMER: Craig Brennan
 # DATE CREATED: 30/12/2023                                 
-# REVISED DATE: 
+# REVISED DATE: 02/01/2024
 # PURPOSE: Create a function adjust_results4_isadog that adjusts the results 
 #          dictionary to indicate whether or not the pet image label is of-a-dog, 
 #          and to indicate whether or not the classifier image label is of-a-dog.
@@ -72,17 +72,10 @@ def adjust_results4_isadog(results_dic, dogfile):
         for dog_name in line.split(","):
             dog_names.append(dog_name.strip())
 
-    for entry in results_dic:
+    for results_dic_values in results_dic.values():
       # Populate the "is a dog" list entry
-      if results_dic[entry][0] in dog_names:
-          results_dic[entry].append(1)
-      else:
-          results_dic[entry].append(0)
+      results_dic_values.append(int(results_dic_values[0] in dog_names))
 
       # Populate the "classified as a dog" list entry
-      classification_result_is_dog = 0
-      for classification_item in [c.strip() for c in results_dic[entry][1].split(",")]:
-        if classification_item in dog_names:
-          classification_result_is_dog = 1
-          break
-      results_dic[entry].append(classification_result_is_dog)
+      classification_result_is_dog = [1 for c in results_dic_values[1].split(",") if c.strip() in dog_names]
+      results_dic_values.append(int(sum(classification_result_is_dog)!=0))

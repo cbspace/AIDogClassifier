@@ -72,22 +72,22 @@ def calculates_results_stats(results_dic):
     n_dogs_img, n_notdogs_img, n_match = 0, 0, 0
     n_correct_dogs, n_correct_notdogs, n_correct_breed = 0, 0, 0
 
-    for k in results_dic:
+    for results_values in results_dic.values():
         # Check for match
-        if results_dic[k][2]: 
+        if results_values[2]: 
             n_match += 1
         # Check if result is a dog
-        if results_dic[k][3]: 
+        if results_values[3]: 
             n_dogs_img += 1
             # Check if dog classification correct
-            if results_dic[k][4]:
+            if results_values[4]:
                 n_correct_dogs += 1
             # Check if breed classification is correct
-            if results_dic[k][0] in [r.strip() for r in results_dic[k][1].split(",")]:
+            if results_values[2]:
                 n_correct_breed += 1
         else: # Not a dog
             n_notdogs_img += 1
-            if not results_dic[k][4]:
+            if not results_values[4]:
                 n_correct_notdogs += 1
 
     results_stat_dic = {}

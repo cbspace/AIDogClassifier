@@ -7,10 +7,10 @@ This project was created as part of the RMIT/Udacity Nanodegree "AI Programming 
 usage: check_images.py [-h] [--dir DIR] [--arch ARCH] [--dogfile DOGFILE]
 
 options:
-  -h, --help         show this help message and exit
-  --dir DIR          Directory containing image files for model classification
-  --arch ARCH        CNN model to use: vgg, resnet or alexnet
-  --dogfile DOGFILE  Text file containing dog breed names
+  -h, --help                   show this help message and exit
+  --dir DIR                    Directory containing image files for model classification
+  --arch {vgg,resnet,alexnet}  CNN model to use
+  --dogfile DOGFILE            Text file containing dog breed names
 
 Example:
 `python check_images.py --dir pet_images/ --arch resnet --dogfile dognames.txt`
