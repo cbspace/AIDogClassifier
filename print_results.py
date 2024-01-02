@@ -63,15 +63,10 @@ def print_results(results_dic, results_stats_dic, model,
            None - simply printing results.
     """    
     print(
-'''Total Images: {}, Matches: {}, NOT Matches: {}
-NOTE: Number of Matches and non-matches is based on file names (labels)
-
+'''
 ** Statistics **
 N Images: {},  N Dog Images: {},  N NotDog Images: {} 
 Correct NOT-a-dog: {:.2f}%, Correct dog: {:.2f}%, Correct Breed: {:.2f}%, Match Labels: {:.2f}%\n'''.format(
-    results_stats_dic["n_images"],
-    results_stats_dic["n_match"],
-    results_stats_dic["n_images"] - results_stats_dic["n_match"],
     results_stats_dic["n_images"],
     results_stats_dic["n_dogs_img"],
     results_stats_dic["n_notdogs_img"],
@@ -81,13 +76,15 @@ Correct NOT-a-dog: {:.2f}%, Correct dog: {:.2f}%, Correct Breed: {:.2f}%, Match 
     results_stats_dic["pct_match"]
     ))
     
-    print("** Dog Breeds Identified **")
-    for r in results_dic:
-        if results_dic[r][3]:
-            print(f"File: {r:36} Breed: {results_dic[r][1]}")
+    if print_incorrect_dogs:
+        print("** Non-Dogs Identified **")
+        for values in results_dic.values():
+            if  values[3] != values[4]:
+                print(f"Pet Label: {values[0]:36} Classifier Label: {values[1]}")
 
-    print("\n** Non-Dogs Identified **")
-    for r in results_dic:
-        if not results_dic[r][3]:
-            print(f"File: {r:36} Identification: {results_dic[r][1]}")
+    if print_incorrect_breed:
+        print("\n** Incorrect Breeds Identified **")
+        for values in results_dic.values():
+            if values[3] and values[4] and not values[2]:
+                print(f"Pet Label: {values[0]:36} Classifier Label: {values[1]}")
                 

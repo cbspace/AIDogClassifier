@@ -91,7 +91,7 @@ def main():
         classify_images(in_arg.dir, results, in_arg.arch)
 
         # Function that checks Results Dictionary using results    
-        #check_classifying_images(results)    
+        check_classifying_images(results)    
 
         
         # TODO 4: Define adjust_results4_isadog function within the file adjust_results4_isadog.py
