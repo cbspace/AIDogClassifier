@@ -76,13 +76,16 @@ Correct NOT-a-dog: {:.2f}%, Correct dog: {:.2f}%, Correct Breed: {:.2f}%, Match 
     results_stats_dic["pct_match"]
     ))
     
-    if print_incorrect_dogs:
+    if (print_incorrect_dogs and 
+        (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'])
+          != results_stats_dic['n_images']):
         print("** Non-Dogs Identified **")
         for values in results_dic.values():
             if  values[3] != values[4]:
                 print(f"Pet Label: {values[0]:36} Classifier Label: {values[1]}")
 
-    if print_incorrect_breed:
+    if (print_incorrect_breed and 
+        (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
         print("\n** Incorrect Breeds Identified **")
         for values in results_dic.values():
             if values[3] and values[4] and not values[2]:
